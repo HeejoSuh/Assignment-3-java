@@ -153,7 +153,7 @@ public class BinarySearch{
 				} else {
 					//in the list
 
-		            System.out.println("\n"+inputNumber+" is at "+answer+" index!");
+		            System.out.println("\n"+inputNumber+" is at index "+(answer+1));
 				}
 			}
 			
