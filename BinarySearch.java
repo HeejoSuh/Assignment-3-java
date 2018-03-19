@@ -99,7 +99,7 @@ public class BinarySearch{
     	}
 		
 		
-		while (!choice.equals("E")) {
+		run: while (!choice.equals("E")) {
 			//not have exited program
 			
 			//get choice
@@ -109,8 +109,11 @@ public class BinarySearch{
 						+ "\nI : insert value\nS : search for value\nE : exit");
 
 				choice = scanner.nextLine();
-				
-				if (! choice.equals("I") && !choice.equals("S")){
+
+				if (choice.equals("E")){
+					//stop program
+					break run;
+				} else if (! choice.equals("I") && !choice.equals("S")){
 					//error
 					System.out.println("Input a valid answer! Try again!");
 				}
