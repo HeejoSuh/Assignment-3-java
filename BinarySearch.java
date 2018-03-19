@@ -131,6 +131,7 @@ public class BinarySearch{
 					inputNumber = Integer.parseInt(input);
 				}catch (IllegalArgumentException x) { 
 					System.out.println("Insert an integer!");
+					input = "";
 				}
 			}//closing for get number
 			
