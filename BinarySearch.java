@@ -1,6 +1,5 @@
 /****************************************************************************
- *
- * Created by: Heejo Suh
+* Created by: Heejo Suh
  * Created on: Mar 2018
  * Created for: learning
  * 
@@ -72,8 +71,34 @@ public class BinarySearch{
 		//so return '-1'
 		return -1;
     }//closing for binarySearch
-
 		
+	
+	
+	//------------------------
+	public static List<Integer> sortList(List<Integer> inputArray){
+			//Sorts the unsorted list and assigns the result to the sorted list
+
+			List<Integer> sortedList = new ArrayList<>();
+
+			Integer smallestVal = 0; //default is 0
+			
+			for(int count = 0 ; count<inputArray.size() ; ) {
+				//check all values of input array 
+				smallestVal = inputArray.get(0); //set as new smallest number
+				for(int eachValue: inputArray) {
+					//search for the smallest value in input array and restate it as such
+					//if the value is less than the smallest value, set it to new smallest value
+					smallestVal = (eachValue < smallestVal)? eachValue : smallestVal;
+				}
+				
+				sortedList.add(smallestVal); //add to sortedList
+				inputArray.remove(smallestVal); //remove the small value from input array
+			}
+			
+			return sortedList;
+			
+		
+		}
 	
 	
 	//------------------------
@@ -83,10 +108,10 @@ public class BinarySearch{
 		
 		Scanner scanner = new Scanner(System.in);
 		String input = "", choice = "";
-		int inputNumber = 0, numberOfIntegersInList = 250;
+		int inputNumber = 0, numberOfIntegersInList = 5;
 		
 		//create random list
-		List<Integer> randomList = new ArrayList<>();
+		List<Integer> randomList = new ArrayList<>(), sortedList = new ArrayList<>();
 		
 		
 		System.out.println("List:");
@@ -99,7 +124,7 @@ public class BinarySearch{
     	}
 		
 		
-		run: while (!choice.equals("E")) {
+		while (!choice.equals("E")) {
 			//not have exited program
 			
 			//get choice
@@ -109,11 +134,8 @@ public class BinarySearch{
 						+ "\nI : insert value\nS : search for value\nE : exit");
 
 				choice = scanner.nextLine();
-
-				if (choice.equals("E")){
-					//stop program
-					break run;
-				} else if (! choice.equals("I") && !choice.equals("S")){
+				
+				if (! choice.equals("I") && !choice.equals("S")){
 					//error
 					System.out.println("Input a valid answer! Try again!");
 				}
@@ -131,7 +153,6 @@ public class BinarySearch{
 					inputNumber = Integer.parseInt(input);
 				}catch (IllegalArgumentException x) { 
 					System.out.println("Insert an integer!");
-					input = "";
 				}
 			}//closing for get number
 			
@@ -144,12 +165,14 @@ public class BinarySearch{
 			}
 			
 			//sort
-			Collections.sort(randomList); //sorts list from least to greatest
-			System.out.print("\nSorted list:\n"+randomList+"\n");
+			sortedList = sortList(randomList); //sorts list from least to greatest
+			
+			
+			System.out.print("\nSorted list:\n"+sortedList+"\n");
 			
 			if (choice.equals("S")){
 				//search value
-				int answer = binarySearch(randomList, inputNumber);
+				int answer = binarySearch(sortedList, inputNumber);
 				
 				if (answer == -1) {
 					//not in the list
@@ -157,7 +180,7 @@ public class BinarySearch{
 				} else {
 					//in the list
 
-		            System.out.println("\n"+inputNumber+" is at index "+(answer+1));
+		            System.out.println("\n"+inputNumber+" is at "+answer+" index!");
 				}
 			}
 			
