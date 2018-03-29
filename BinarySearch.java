@@ -108,7 +108,7 @@ public class BinarySearch{
 		
 		Scanner scanner = new Scanner(System.in);
 		String input = "", choice = "";
-		int inputNumber = 0, numberOfIntegersInList = 5;
+		int inputNumber = 0, numberOfIntegersInList = 250;
 		
 		//create random list
 		List<Integer> randomList = new ArrayList<>(), sortedList = new ArrayList<>();
@@ -117,7 +117,7 @@ public class BinarySearch{
 		System.out.println("List:");
 		//add 250 random numbers
 		for ( int count=0; count<numberOfIntegersInList; count++ ) {  
-    		//add random number from 0 to 500
+    		//add random number from 0 to 1000
 	    	int randNumber= new Random().nextInt(1000);
 	    	System.out.print(randNumber+" "); //show to user
 	    	randomList.add(randNumber);
